@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ViekGame</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="logo" href="#">
+    <div class="logo-mark">VG</div>
+    <span class="logo-name">Viek<span>Game</span></span>
+  </a>
+  <div class="nav-links">
+    <a href="#">Modes</a>
+    <a href="#">Leaderboard</a>
+    <a href="#">Pricing</a>
+  </div>
+  <div class="nav-cta">
+    <button class="btn-ghost">Log in</button>
+    <button class="btn-blue">Play free</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-badge"><span class="badge-dot"></span> Now live — Daily challenges every 24hrs</div>
+  <h1>Play tech.<br><span class="line2">Prove yourself.</span></h1>
+  <p>ViekGame is the competitive quiz platform for developers and tech lovers. Answer fast, score high, and take the top spot.</p>
+  <div class="hero-btns">
+    <button class="btn-big btn-big-blue">Start playing free</button>
+    <button class="btn-big btn-big-outline">See game modes</button>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="ticker-item"><strong>🏆 Tolu_Dev</strong> just scored 2,400 pts in Classic Arena</span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item"><strong>🔥 Streak alert</strong> AdeCode is on a 14-day streak</span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item"><strong>⚡ New record</strong> Zara_Tech answered in 1.2 seconds</span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item"><strong>🎯 Debug Duel</strong> Emeka vs Chidi — Emeka wins!</span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item"><strong>🏆 Tolu_Dev</strong> just scored 2,400 pts in Classic Arena</span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item"><strong>🔥 Streak alert</strong> AdeCode is on a 14-day streak</span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item"><strong>⚡ New record</strong> Zara_Tech answered in 1.2 seconds</span>
+    <span class="ticker-sep">·</span>
+    <span class="ticker-item"><strong>🎯 Debug Duel</strong> Emeka vs Chidi — Emeka wins!</span>
+  </div>
+</div>
+
+<!-- GAME PREVIEW -->
+<section class="game-section">
+  <div class="game-inner">
+    <div class="game-left">
+      <div class="eyebrow">Try it now — no signup needed</div>
+      <h2 class="section-title" style="margin-bottom:1rem">Get a feel for<br>the game</h2>
+      <p style="font-size:16px;color:var(--muted);line-height:1.7;margin-bottom:2rem">This is a real sample from Classic Quiz Arena. Answer before the timer runs out — speed matters too. Think you've got what it takes?</p>
+      <div style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap">
+        <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted)">
+          <span style="width:8px;height:8px;border-radius:50%;background:#10b981;display:inline-block"></span>
+          Speed counts toward your score
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted)">
+          <span style="width:8px;height:8px;border-radius:50%;background:var(--blue);display:inline-block"></span>
+          5 sample questions
+        </div>
+      </div>
+    </div>
+    <div class="game-right">
+      <div class="quiz-card">
+        <div class="quiz-top">
+          <span class="quiz-mode-tag">Classic Arena — Sample</span>
+          <div class="quiz-timer">
+            <span class="timer-dot"></span>
+            <span id="timer-display">15</span>s
+          </div>
+        </div>
+        <div class="quiz-progress">
+          <div class="quiz-progress-bar" id="progress-bar" style="width:100%"></div>
+        </div>
+        <div class="quiz-body">
+          <div class="quiz-qnum" id="q-num">Question 1 of 5</div>
+          <div class="quiz-question" id="q-text">What does CSS stand for?</div>
+          <div class="quiz-options" id="q-options">
+            <button class="quiz-opt" onclick="selectAnswer(this, false)">
+              <span class="opt-letter">A</span> Computer Style Sheets
+            </button>
+            <button class="quiz-opt" onclick="selectAnswer(this, true)">
+              <span class="opt-letter">B</span> Cascading Style Sheets
+            </button>
+            <button class="quiz-opt" onclick="selectAnswer(this, false)">
+              <span class="opt-letter">C</span> Creative Style System
+            </button>
+            <button class="quiz-opt" onclick="selectAnswer(this, false)">
+              <span class="opt-letter">D</span> Coded Style Syntax
+            </button>
+          </div>
+        </div>
+        <div class="quiz-result" id="quiz-result">
+          <div class="result-emoji" id="result-emoji">🎉</div>
+          <div class="result-text" id="result-text">Correct!</div>
+          <div class="result-sub" id="result-sub">Nice one. Ready for the next one?</div>
+          <button class="btn-next" id="next-btn" onclick="nextQuestion()">Next question →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GAME MODES -->
+<section id="modes-section" style="background:var(--dark2);border-bottom:1px solid var(--border)">
+  <div class="section-inner" style="padding:5rem 2.5rem">
+    <div class="eyebrow">Game modes</div>
+    <h2 class="section-title">Eight ways to compete</h2>
+    <p class="section-sub">Every mode is designed to sharpen a real skill — not just trivia for trivia's sake.</p>
+
+    <!-- Desktop grid -->
+    <div class="modes-grid" id="modes-desktop">
+      <div class="mode-card hero-mode">
+        <div class="mode-num">01 — CORE MODE</div>
+        <div class="mode-title">Classic Quiz Arena</div>
+        <div class="mode-desc">Timed multiple choice across tech and general categories. Solo or async-ranked against other players.</div>
+        <span class="mode-pill pill-free">Free</span>
+      </div>
+      <div class="mode-card">
+        <div class="mode-num">02</div>
+        <div class="mode-title">Guess the Output</div>
+        <div class="mode-desc">Read a code snippet. Pick what it prints before the timer hits zero.</div>
+        <span class="mode-pill pill-premium">Premium</span>
+      </div>
+      <div class="mode-card">
+        <div class="mode-num">03</div>
+        <div class="mode-title">Code Debug Duel</div>
+        <div class="mode-desc">One intentional bug. Four suspect lines. Find it fast or lose the round.</div>
+        <span class="mode-pill pill-premium">Premium</span>
+      </div>
+      <div class="mode-card">
+        <div class="mode-num">04</div>
+        <div class="mode-title">Speed Snippet</div>
+        <div class="mode-desc">Fill in the missing line of code. Exact match wins — no guessing.</div>
+        <span class="mode-pill pill-premium">Premium</span>
+      </div>
+      <div class="mode-card">
+        <div class="mode-num">05</div>
+        <div class="mode-title">Daily Challenge</div>
+        <div class="mode-desc">One challenge per day, same for everyone. Build your streak or lose it.</div>
+        <span class="mode-pill pill-free">Free</span>
+      </div>
+      <div class="mode-card">
+        <div class="mode-num">06</div>
+        <div class="mode-title">1v1 Live Duel</div>
+        <div class="mode-desc">Real-time matchmaking. Same question set. Live scoreboard. One winner.</div>
+        <span class="mode-pill pill-premium">Premium</span>
+      </div>
+      <div class="mode-card">
+        <div class="mode-num">07</div>
+        <div class="mode-title">Team Tournament</div>
+        <div class="mode-desc">Bracket-style department vs department. Internal engagement, ViekTech only.</div>
+        <span class="mode-pill pill-staff">Staff only</span>
+      </div>
+      <div class="mode-card">
+        <div class="mode-num">08</div>
+        <div class="mode-title">Flashcard Mode</div>
+        <div class="mode-desc">Study at your pace with spaced-repetition tech flashcards. No timer. Just learning.</div>
+        <span class="mode-pill pill-premium">Premium</span>
+      </div>
+    </div>
+
+    <!-- Mobile sticky stack -->
+    <div id="modes-mobile" style="display:none">
+      <div id="modes-sticky-wrapper">
+        <div id="modes-stack-window">
+          <div class="mstack-card" data-index="0">
+            <div class="mode-num">01 — CORE MODE</div>
+            <div class="mode-title">Classic Quiz Arena</div>
+            <div class="mode-desc">Timed multiple choice across tech and general categories. Solo or async-ranked.</div>
+            <span class="mode-pill pill-free">Free</span>
+          </div>
+          <div class="mstack-card" data-index="1">
+            <div class="mode-num">02</div>
+            <div class="mode-title">Guess the Output</div>
+            <div class="mode-desc">Read a code snippet. Pick what it prints before the timer hits zero.</div>
+            <span class="mode-pill pill-premium">Premium</span>
+          </div>
+          <div class="mstack-card" data-index="2">
+            <div class="mode-num">03</div>
+            <div class="mode-title">Code Debug Duel</div>
+            <div class="mode-desc">One intentional bug. Four suspect lines. Find it fast or lose the round.</div>
+            <span class="mode-pill pill-premium">Premium</span>
+          </div>
+          <div class="mstack-card" data-index="3">
+            <div class="mode-num">04</div>
+            <div class="mode-title">Speed Snippet</div>
+            <div class="mode-desc">Fill in the missing line of code. Exact match wins — no guessing.</div>
+            <span class="mode-pill pill-premium">Premium</span>
+          </div>
+          <div class="mstack-card" data-index="4">
+            <div class="mode-num">05</div>
+            <div class="mode-title">Daily Challenge</div>
+            <div class="mode-desc">One challenge per day, same for everyone. Build your streak or lose it.</div>
+            <span class="mode-pill pill-free">Free</span>
+          </div>
+          <div class="mstack-card" data-index="5">
+            <div class="mode-num">06</div>
+            <div class="mode-title">1v1 Live Duel</div>
+            <div class="mode-desc">Real-time matchmaking. Same question set. Live scoreboard. One winner.</div>
+            <span class="mode-pill pill-premium">Premium</span>
+          </div>
+          <div class="mstack-card" data-index="6">
+            <div class="mode-num">07</div>
+            <div class="mode-title">Team Tournament</div>
+            <div class="mode-desc">Bracket-style department vs department. ViekTech staff only.</div>
+            <span class="mode-pill pill-staff">Staff only</span>
+          </div>
+          <div class="mstack-card" data-index="7">
+            <div class="mode-num">08</div>
+            <div class="mode-title">Flashcard Mode</div>
+            <div class="mode-desc">Spaced-repetition tech flashcards. No timer. Just learning.</div>
+            <span class="mode-pill pill-premium">Premium</span>
+          </div>
+        </div>
+        <div id="modes-counter">1 / 8</div>
+      </div>
+      <div id="modes-scroll-space"></div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS + LEADERBOARD -->
+<section class="section">
+  <div class="section-inner">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start">
+      <div>
+        <div class="eyebrow">How it works</div>
+        <h2 class="section-title">Up and running in seconds</h2>
+        <p class="section-sub">No downloads. No setup. Just sign up and play.</p>
+        <div style="display:grid;gap:2rem">
+          <div class="how-step">
+            <div class="step-num">1</div>
+            <h3>Create your account</h3>
+            <p>Sign up with email or Google. ViekTech staff are detected automatically by email domain.</p>
+          </div>
+          <div class="how-step">
+            <div class="step-num">2</div>
+            <h3>Pick a mode and play</h3>
+            <p>Jump into Classic Arena free or unlock all 8 modes with Premium. The timer starts immediately.</p>
+          </div>
+          <div class="how-step">
+            <div class="step-num">3</div>
+            <h3>Climb the leaderboard</h3>
+            <p>Score points for correct answers and speed. Daily, weekly and all-time boards reset your race.</p>
+          </div>
+          <div class="how-step">
+            <div class="step-num">4</div>
+            <h3>Build your streak</h3>
+            <p>Come back every day for the Daily Challenge. Miss a day and your streak resets — don't miss a day.</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="leaderboard-preview">
+          <div class="lb-header">
+            <span>Daily leaderboard</span>
+            <span class="lb-tag">Live</span>
+          </div>
+          <div class="lb-row">
+            <div class="lb-rank gold">1</div>
+            <div class="lb-avatar" style="background:rgba(245,158,11,0.15);color:#f59e0b">TD</div>
+            <div class="lb-name">Tolu_Dev</div>
+            <div class="lb-score">2,400</div>
+          </div>
+          <div class="lb-row">
+            <div class="lb-rank silver">2</div>
+            <div class="lb-avatar" style="background:rgba(26,107,255,0.15);color:#60a5fa">ZT</div>
+            <div class="lb-name">Zara_Tech</div>
+            <div class="lb-score">2,180</div>
+          </div>
+          <div class="lb-row">
+            <div class="lb-rank bronze">3</div>
+            <div class="lb-avatar" style="background:rgba(139,92,246,0.15);color:#a78bfa">AC</div>
+            <div class="lb-name">AdeCode</div>
+            <div class="lb-score">1,950</div>
+          </div>
+          <div class="lb-row">
+            <div class="lb-rank">4</div>
+            <div class="lb-avatar" style="background:rgba(16,185,129,0.12);color:#34d399">EO</div>
+            <div class="lb-name">Emeka_O</div>
+            <div class="lb-score">1,740</div>
+          </div>
+          <div class="lb-row">
+            <div class="lb-rank">5</div>
+            <div class="lb-avatar" style="background:rgba(244,63,94,0.1);color:#fb7185">KM</div>
+            <div class="lb-name">Kemi_M</div>
+            <div class="lb-score">1,620</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="section" style="background:var(--dark2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div class="section-inner">
+    <div class="eyebrow">Pricing</div>
+    <h2 class="section-title">Start free. Upgrade when ready.</h2>
+    <p class="section-sub">No credit card to start. Cancel premium anytime.</p>
+    <div class="pricing-wrap">
+      <div class="plan">
+        <div class="plan-tier">Free</div>
+        <div class="plan-price">₦0 <sub>/ forever</sub></div>
+        <div class="plan-tagline">Get started and see if you've got what it takes.</div>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li><span class="feat-check"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="#1a6bff" stroke-width="1.5" stroke-linecap="round"/></svg></span>5 games per day</li>
+          <li><span class="feat-check"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="#1a6bff" stroke-width="1.5" stroke-linecap="round"/></svg></span>2 starter categories</li>
+          <li><span class="feat-check"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="#1a6bff" stroke-width="1.5" stroke-linecap="round"/></svg></span>Classic Arena mode</li>
+          <li><span class="feat-check"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="#1a6bff" stroke-width="1.5" stroke-linecap="round"/></svg></span>Daily challenge</li>
+          <li><span class="feat-x">✕</span><span style="color:var(--muted)">Live duels</span></li>
+          <li><span class="feat-x">✕</span><span style="color:var(--muted)">All categories</span></li>
+        </ul>
+        <button class="plan-btn btn-ghost" style="border:1px solid var(--border)">Play free now</button>
+      </div>
+      <div class="plan featured">
+        <div class="plan-badge">Most popular</div>
+        <div class="plan-tier">Premium</div>
+        <div class="plan-price">₦2,000 <sub>/ month</sub></div>
+        <div class="plan-tagline">Unlimited access. Every mode. No caps. No ads.</div>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li><span class="feat-check"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="#1a6bff" stroke-width="1.5" stroke-linecap="round"/></svg></span>Unlimited games</li>
+          <li><span class="feat-check"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="#1a6bff" stroke-width="1.5" stroke-linecap="round"/></svg></span>All categories unlocked</li>
+          <li><span class="feat-check"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="#1a6bff" stroke-width="1.5" stroke-linecap="round"/></svg></span>All 8 game modes</li>
+          <li><span class="feat-check"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="#1a6bff" stroke-width="1.5" stroke-linecap="round"/></svg></span>1v1 live duels</li>
+          <li><span class="feat-check"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="#1a6bff" stroke-width="1.5" stroke-linecap="round"/></svg></span>Priority matchmaking</li>
+          <li><span class="feat-check"><svg viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="#1a6bff" stroke-width="1.5" stroke-linecap="round"/></svg></span>Profile badges and no ads</li>
+        </ul>
+        <button class="plan-btn btn-blue">Upgrade to premium</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section">
+  <div class="section-inner">
+    <div class="cta-block">
+      <div class="cta-glow"></div>
+      <h2>Ready to find out<br>where you rank?</h2>
+      <p>Join ViekGame today. It takes 30 seconds to sign up and your first game is completely free.</p>
+      <button class="btn-big btn-big-blue" style="position:relative">Create free account</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div style="display:flex;align-items:center;gap:1.5rem">
+    <a class="logo" href="#" style="text-decoration:none">
+      <div class="logo-mark" style="width:30px;height:30px;font-size:13px">VG</div>
+      <span class="logo-name" style="font-size:15px">Viek<span>Game</span></span>
+    </a>
+    <span class="footer-copy">© 2026 ViekTech. All rights reserved.</span>
+  </div>
+  <div class="footer-links">
+    <a href="#">Privacy</a>
+    <a href="#">Terms</a>
+    <a href="#">Contact</a>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
